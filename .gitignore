@@ -1,0 +1,28 @@
+# External workspaces
+/mavros2_ws/
+/vrpn_ws/
+
+# ROS / colcon build outputs
+build/
+install/
+log/
+*/build/
+*/install/
+*/log/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local archives and generated files
+*.zip
+*.tar
+*.tar.gz
+*.bag
+*.db3
+
+# Editor / OS noise
+.DS_Store
+.vscode/
+.idea/

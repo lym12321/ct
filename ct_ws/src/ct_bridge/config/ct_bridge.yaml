@@ -1,0 +1,48 @@
+# CT Bridge real-flight configuration.
+#
+# Keep node names at the top level so ROS 2 can load parameters by node name.
+
+vrpn_client_node:
+  ros__parameters:
+    server: "192.168.2.104"
+    port: 3883
+    frame_id: "world"
+    use_server_time: false
+    refresh_tracker_frequency: 0.2
+    update_frequency: 60.0
+
+mocap_to_mavros:
+  ros__parameters:
+    input_topic: "/ct/pose"
+    output_topic: "/mavros/vision_pose/pose"
+    position_scale: 0.01
+    yaw_correction_deg: 0.0
+
+mavros_node:
+  ros__parameters:
+    fcu_url: "serial:///dev/ttyTHS1:921600"
+    gcs_url: "udp://@192.168.2.106:14550"
+
+mavros:
+  ros__parameters:
+    plugin_allowlist:
+      - sys_status
+      - sys_time
+      - command
+      - imu
+      - local_position
+      - setpoint_position
+      - vision_pose
+
+offboard_control:
+  ros__parameters:
+    hover_height: 0.23
+    takeoff_duration: 2.0
+    update_rate: 30.0
+    yaw_rad: 0.0
+    shutdown_land_hold_sec: 6.0
+
+monitor:
+  ros__parameters:
+    check_rate: 2.0
+    warning_no_data_sec: 2.0
